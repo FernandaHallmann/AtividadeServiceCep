@@ -5,6 +5,8 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 
+import java.util.List;
+
 @WebService
 public interface UsuarioSEI {
 
@@ -22,4 +24,7 @@ public interface UsuarioSEI {
 
   @WebMethod
   String deletaUsuario(@WebParam(name = "idUsuario") Long idUsuario);
+
+  @WebMethod
+  List<Usuario> consultaUsuarios();
 }

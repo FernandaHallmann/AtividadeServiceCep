@@ -50,7 +50,7 @@ public class EnderecoDAOImpl implements EnderecoDAO{
 
   @Override
   public Endereco findByCep(String cep) {
-    return em.find(Endereco.class, cep);
+    return em.createQuery("SELECT e FROM Endereco e WHERE cep = :cep", Endereco.class).setParameter("cep", cep).getSingleResult();
   }
 
   @Override

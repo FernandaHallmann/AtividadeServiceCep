@@ -6,6 +6,8 @@ import br.unipar.programacaointernet.serviceccep.servicecep.model.Usuario;
 import br.unipar.programacaointernet.serviceccep.servicecep.util.EntityManagerUtil;
 import jakarta.jws.WebService;
 
+import java.util.List;
+
 @WebService(endpointInterface = "br.unipar.programacaointernet.serviceccep.servicecep.service.UsuarioSEI")
 public class UsuarioSIB implements UsuarioSEI{
   @Override
@@ -20,6 +22,15 @@ public class UsuarioSIB implements UsuarioSEI{
     Usuario usuario = usuarioDAO.findById(idUsuario);
 
     return usuario;
+  }
+
+  @Override
+  public List<Usuario> consultaUsuarios() {
+    UsuarioDAO usuarioDAO = new UsuarioDAOImpl(EntityManagerUtil.getManager());
+
+    List<Usuario> usuarios = usuarioDAO.findAll();
+
+    return usuarios;
   }
 
   @Override
